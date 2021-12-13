@@ -29,6 +29,7 @@
 / {
 
 
+
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
@@ -48,28 +49,35 @@
         
         combo_lshift {
             timeout-ms = <50>;
-            key-positions = <24 25>;
+            key-positions = <25 26>;
             bindings = <&sk LSHIFT>;
         };
         
         combo_rshift {
             timeout-ms = <50>;
-            key-positions = <34 35>;
+            key-positions = <33 34>;
             bindings = <&sk RSHIFT>;
         };
+        
+        combo_lgui {
+            timeout-ms = <50>;
+            key-positions = <36 37>;
+            bindings = <&sk LGUI>;
+        };
     };
+
 
 
 
         keymap {
                 compatible = "zmk,keymap";
 
-                0 {
+                default_layer {
 // -----------------------------------------------------------------------------------------
 // | XXX       |  Q  |  W  |  E  |  R  |  T  |               |  Y  |  U   |  I  |  O  |  P     | XXXX |
 // | XXX       |  A  |  S  |  D  |  F  |  G  |               |  H  |  J   |  K  |  L  |lay3/;  | XXXX |
 // | XXX       |  Z  |  X  |  C  |  V  |  B  |               |  N  |  M   |  ,  |  .  |  /     | XXXX |
-//                         | LGUI | LALT | SPC |         | ENT | BCK  | L1 |
+//                         | LALT | LCTL | SPC |         | ENT | BCK  | L1 |
 
 
 
@@ -77,7 +85,7 @@
    &trans         &kp Q     &kp W    &kp E  &kp R    &kp T                              &kp Y   &kp U  &kp I     &kp O   &kp P         &trans
    &trans         &kp A     &kp S    &kp D  &kp F    &kp G                              &kp H   &kp J  &kp K     &kp L   &lt 3 SEMI    &trans
    &trans         &kp Z     &kp X    &kp C  &kp V    &kp B                              &kp N   &kp M  &kp COMMA &kp DOT &kp FSLH      &trans
-                                      &sk LGUI &sk LALT &kp SPACE         &kp RET  &kp BKSP   &to 1
+                                      &sk LALT &sk LCTRL &kp SPACE         &kp RET  &kp BKSP   &to 1
                         >;
                 };
                 
@@ -85,7 +93,7 @@
                 
                 
                 
-                1 {
+                number_layer {
 // -----------------------------------------------------------------------------------------
 // |  XXX |  GESC  |  2  |  3  |  4  |  5  |                     | 7  |  8  |  9  |  -  |    | XXX |
 // |  XXX |  TAB   |  @  | #   | $   | %   |                     | 4  |  5  |  6  |  =  |    | XXX |
@@ -103,7 +111,7 @@
                 
                 
                 
-                2 {
+                raise_layer {
 // -----------------------------------------------------------------------------------------
 // | GESC    |  F1   |  F2    |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  |  F10  | BKSP |
 // | TAB/CTRL|  F11  |  F12   |      |      |       |                   |  -   |  =   |  [   |  ]   |  \    |  `   |
@@ -122,7 +130,7 @@
                 
                 
                 
-                3 {
+                adjust_layer {
 // -----------------------------------------------------------------------------------------
 // |  GESC      |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
 // | TAB/CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
@@ -138,7 +146,7 @@
                         >;
                 };                
                 
-                4 {
+                bt_layer {
 // -----------------------------------------------------------------------------------------
 // |  GESC      |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
 // | TAB/CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |

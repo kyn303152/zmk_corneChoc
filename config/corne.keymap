@@ -149,7 +149,7 @@
                         bindings = <
    &trans          &bt BT_CLR     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT         &kp CARET &kp AMPS  &kp UP          &kp LPAR  &kp RPAR  &trans
    &trans          &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &kp MINUS &kp LEFT  &kp DOWN        &kp RIGHT &trans    &trans
-   &trans          &trans       &trans       &trans       &trans       &trans            &kp UNDER &kp PLUS  &kp LBRC        &trans    &trans    &trans
+   &trans          &ext_power EP_OFF       &trans       &trans       &trans       &trans            &kp UNDER &kp PLUS  &kp LBRC        &trans    &trans    &trans
                     	   &kp LGUI     &kp LALT       &kp SPACE    &kp RET           &trans    &trans
                         >;
                 };                

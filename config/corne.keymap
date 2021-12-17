@@ -28,17 +28,6 @@
 
 / {
 
-
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <4>;
-        };
-    };
-
-
     combos {
         compatible = "zmk,combos";
         combo_esc {
@@ -46,6 +35,13 @@
             key-positions = <1 2>;
             bindings = <&kp ESC>;
         };
+
+        combo_del {
+            timeout-ms = <50>;
+            key-positions = <39 40>;
+            bindings = <&kp DEL>;
+        };
+
         
         combo_lshift {
             timeout-ms = <50>;
@@ -82,10 +78,10 @@
 
                 default_layer {
 // -----------------------------------------------------------------------------------------
-// | XXX       |  Q  |  W  |  E  |  R  |  T  |               |  Y  |  U   |  I  |  O  |  P     | XXXX |
-// | XXX       |  A  |  S  |  D  |  F  |  G  |               |  H  |  J   |  K  |  L  |lay3/;  | XXXX |
-// | XXX       |  Z  |  X  |  C  |  V  |  B  |               |  N  |  M   |  ,  |  .  |  /     | XXXX |
-//                      | LALT | LCTL/TAB | SPC |         | ENT | BCK  | L1 |
+// | XXX   |  Q  |  W  |  E  |  R  |  T  |               |  Y  |  U   |  I  |  O  |  P     | XXXX |
+// | XXX   |  A  |  S  |  D  |  F  |  G  |               |  H  |  J   |  K  |  L  |lay3/;  | XXXX |
+// | XXX   |  Z  |  X  |  C  |  V  |  B  |               |  N  |  M   |  ,  |  .  |  /     | XXXX |
+//                  | LALT | LCTL/TAB | SPC |         | ENT | BCK  | L1 |
 
 
 
@@ -103,17 +99,17 @@
                 
                 number_layer {
 // -----------------------------------------------------------------------------------------
-// |  XXX |  (  |  2  |  3  |  4  |  5  |                     | 7  |  8  |  9  |  -  |  ) | XXX |
-// |  XXX |  [  |  @  | #   | $   | %   |                     | 4  |  5  |  6  |  =  |  ] | XXX |
-// |  XXX |  {  |     |     |     |     |                     | 1  |  2  |  3  | ENT |  } | XXX |
+// |  XXX |  (  |  F10 | F7 |  F8 | F9  |                     | 7  |  8  |  9  |  -  |  ) | XXX |
+// |  XXX |  [  |  F11 | F4 |  F5 | F6  |                     | 4  |  5  |  6  |  =  |  ] | XXX |
+// |  XXX |  {  |  F12 | F1 |  F2 | F3  |                     | 1  |  2  |  3  | ENT |  } | XXX |
 //                           | GUI |     | SPC |               | 0 |  BKSP  | L0 |
 
 
-                        bindings = <                                                          
-   &trans     &kp LPAR    &kp N2       &kp N3       &kp N4       &kp N5                              &kp N7    &kp N8   &kp N9   &kp MINUS    &kp RPAR       &trans
-   &trans     &kp LBKT    &kp AT       &kp HASH     &kp DLLR     &kp PRCNT                           &kp N4    &kp N5   &kp N6   &kp EQUAL    &kp RBKT       &trans
-   &trans     &kp LBRC    &trans       &trans       &trans       &trans                              &kp N1    &kp N2   &kp N3   &kp ENTER    &kp RBRC       &trans
-                          	                      &to 0     &trans       &trans              &kp N0   &trans    &to 2
+                        bindings = <                                                      
+   &trans     &kp LPAR    &kp F10   &kp F7   &kp F8   &kp F9                              &kp N7    &kp N8   &kp N9   &kp MINUS    &kp RPAR       &trans
+   &trans     &kp LBKT    &kp F11   &kp F4   &kp F5   &kp F6                              &kp N4    &kp N5   &kp N6   &kp EQUAL    &kp RBKT       &trans
+   &trans     &kp LBRC    &kp F12   &kp F1   &kp F2   &kp F3                              &kp N1    &kp N2   &kp N3   &kp ENTER    &kp RBRC       &trans
+                          	              &to 0     &trans       &trans              &kp N0   &trans    &to 2
                         >;
                 };
                 
@@ -148,29 +144,12 @@
 
                         bindings = <
    &trans          &bt BT_CLR     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT         &kp CARET &kp AMPS  &kp UP          &kp LPAR  &kp RPAR  &trans
-   &trans          &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &kp MINUS &kp LEFT  &kp DOWN        &kp RIGHT &trans    &trans
-   &trans          &ext_power EP_OFF       &trans       &trans       &trans       &trans            &kp UNDER &kp PLUS  &kp LBRC        &trans    &trans    &trans
-                    	   &kp LGUI     &kp LALT       &kp SPACE    &kp RET           &trans    &trans
+   &trans          &bt BT_SEL 0   &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &kp MINUS &kp LEFT  &kp DOWN        &kp RIGHT &trans    &trans
+   &trans          &ext_power     EP_OFF       &trans       &trans       &trans       &trans            &kp UNDER &kp PLUS  &kp LBRC        &trans    &trans    &trans
+                              &kp LGUI     &kp LALT       &kp SPACE    &kp RET           &trans    &trans
                         >;
                 };                
-                
-                bt_layer {
-// -----------------------------------------------------------------------------------------
-// |  GESC      |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BKSP |
-// | TAB/CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-// | SHFT     |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-//                    | GUI |     | SPC |   | ENT |     | ALT |
-
-
-                        bindings = <   
-   &trans          &bt BT_CLR     &trans      &trans     &trans    &trans        &trans &trans &trans         &trans  &trans  &trans
-   &trans          &bt BT_SEL 0   &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4      &kp MINUS &kp LEFT  &kp DOWN        &kp RIGHT &trans    &trans
-   &trans          &ext_power EP_OFF &trans       &trans       &trans       &trans            &kp UNDER &kp PLUS  &kp LBRC        &trans    &trans    &trans
-                    	   &kp LGUI     &kp LALT       &kp SPACE    &kp RET           &trans    &trans
-                        >;
-                };     
-
-
+               
 
 
 
